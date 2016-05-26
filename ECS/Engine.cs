@@ -4,14 +4,21 @@ using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using CocosSharp;
+
 
 namespace ECS
 {
-    public class Engine
+    public class Engine : CCLayerColor
     {
         private static EntityManager _entityManager = new EntityManager();
         private static SystemManager _systemManager = new SystemManager();
         private static List<string> _entityDestructionList = new List<string>();
+
+        public Engine() : base(CCColor4B.Blue)
+        {
+            
+        }
 
         public void Init()
         {
@@ -20,7 +27,6 @@ namespace ECS
             _entityManager.CreateWorld();
            // _entityManager.CreateBallEntity();
             _entityManager.CreatePlayerEntity();
-
         }
 
         public void Run()

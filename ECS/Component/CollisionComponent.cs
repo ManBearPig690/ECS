@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ECS.Component
 {
-    /// <summary>
-    /// data for creating sprites
-    /// </summary>
-    public class SpriteComponent : Component
+    // data for collision...could contain bounding box rules for each object has collision
+    class CollisionComponent : Component
     {
     }
 }
