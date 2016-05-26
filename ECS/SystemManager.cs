@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECS.Abilities
+namespace ECS
 {
-    public class Ability
+    public class SystemManager
     {
     }
 }

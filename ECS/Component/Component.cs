@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Logic.Component
+namespace ECS.Component
 {
     public class Component
     {
-        public readonly string ComponentId; 
+        public string ComponentId; 
 
         public Component()
         {

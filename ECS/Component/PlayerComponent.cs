@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Logic.Abilities;
+using ECS.Abilities;
 
-namespace Logic.Component
+namespace ECS.Component
 {
     public class PlayerComponent : Component
     {
@@ -25,6 +25,11 @@ namespace Logic.Component
 
 
         public float CriticalHitChance { get; set; }
+
+        public PlayerComponent()
+        {
+            ComponentId = "PlayerComponent";
+        }
         
     }
 }

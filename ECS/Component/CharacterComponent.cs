@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Logic.Abilities;
-using Logic.Entities;
+using ECS.Abilities;
+using ECS.Entities;
 
-namespace Logic.Component
+namespace ECS.Component
 {
     public class CharacterComponent : Component
     {
@@ -21,6 +21,11 @@ namespace Logic.Component
         
         public List<Buff> Buffs { get; set; }
         public List<Buff> DeBuffs { get; set; }
+
+        public CharacterComponent()
+        {
+            ComponentId = "CharacterComponent";
+        }
 
     }
 }

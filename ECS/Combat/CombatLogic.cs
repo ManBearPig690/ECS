@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Logic.Entities;
+using ECS.Entities;
 
-namespace Logic.Combat
+namespace ECS.Combat
 {
     class CombatLogic
     {

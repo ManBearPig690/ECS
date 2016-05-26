@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logic.Entities
+namespace ECS.Entities
 {
     public class Attack
     {

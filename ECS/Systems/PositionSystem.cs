@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logic.Systems
+namespace ECS.Systems
 {
     public class PositionSystem : System
     {

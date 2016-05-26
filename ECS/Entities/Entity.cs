@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Logic.Component;
+using ECS.Component;
 
-namespace Logic.Entities
+namespace ECS.Entities
 {
     public class Entity
     {

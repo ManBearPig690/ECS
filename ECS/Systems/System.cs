@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Logic.Entities;
+using ECS.Entities;
 
-namespace Logic.Systems
+namespace ECS.Systems
 {
     public class System
     {        

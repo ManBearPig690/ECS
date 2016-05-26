@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logic.Component
+namespace ECS.Component
 {
     public class PositionComponent : Component
     {
@@ -15,6 +15,8 @@ namespace Logic.Component
         {
             PositionX = x;
             PositionY = y;
+
+            ComponentId = "PositionComponent";
         }
     }
 }
