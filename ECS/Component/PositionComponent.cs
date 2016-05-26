@@ -8,8 +8,8 @@ namespace ECS.Component
 {
     public class PositionComponent : Component
     {
-        public int PositionX { get; set; }
-        public int PositionY { get; set; }
+        public float PositionX { get; set; }
+        public float PositionY { get; set; }
 
         public PositionComponent(int x, int y)
         {

@@ -10,14 +10,12 @@ namespace ECS.Systems
 {
     public class System
     {        
-        public virtual void Update(int dt){}
-        public virtual void Init() { }
-
-        public static Dictionary<string, Entity> EntityList { get; set; }
+        public virtual void Update(float dt, ref Dictionary<string, Entity> entities, ref List<string> componentEntityList){}
+        //public virtual void Init() { }
 
         public System()
         {
-            EntityList = new Dictionary<string, Entity>();
+            
         }
     }
 }

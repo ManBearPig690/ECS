@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Abilities\Ability.cs" />
     <Compile Include="Abilities\Buff.cs" />
     <Compile Include="Abilities\Resistance.cs" />
@@ -44,6 +41,7 @@
     <Compile Include="Combat\CombatLogic.cs" />
     <Compile Include="Component\CharacterComponent.cs" />
     <Compile Include="Component\Component.cs" />
+    <Compile Include="Component\InputComponent.cs" />
     <Compile Include="Component\MotionComponent.cs" />
     <Compile Include="Component\PlayerComponent.cs" />
     <Compile Include="Component\PositionComponent.cs" />
@@ -59,8 +57,25 @@
     <Compile Include="Messages\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemManager.cs" />
-    <Compile Include="Systems\PositionSystem.cs" />
+    <Compile Include="Systems\MotionSystem.cs" />
     <Compile Include="Systems\System.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="box2d, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CocosSharp.1.7.1.0\lib\portable-net45+win+wpa81+wp81\box2d.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CocosSharp, Version=1.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CocosSharp.1.7.1.0\lib\portable-net45+win+wpa81+wp81\CocosSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CocosSharp.1.7.1.0\lib\portable-net45+win+wpa81+wp81\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

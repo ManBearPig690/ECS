@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECS.Systems
+namespace ECS.Component
 {
-    public class PositionSystem : System
+    public class InputComponent : Component
     {
-        
+
     }
 }

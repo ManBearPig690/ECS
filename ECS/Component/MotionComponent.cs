@@ -8,8 +8,9 @@ namespace ECS.Component
 {
     public class MotionComponent : Component
     {
-        public int VelocityX { get; set; }
-        public int VelocityY { get; set; }
+        public float VelocityX { get; set; }
+        public float VelocityY { get; set; }
         public float Rotation { get; set; }
+        public float Gravity { get; set; }
     }
 }

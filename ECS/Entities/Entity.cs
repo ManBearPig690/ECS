@@ -8,7 +8,7 @@ namespace ECS.Entities
     {
         // Can have system store a static id for the PlayerEntity and the WorldEntity so it can
         // Go directly to the item in the dictionary on certial operations to mayber look up faster
-
+        public bool DestroyEntity = false;
         public readonly string EntityId; // must be unique
         private Dictionary<Type, Component.Component> Components { get; set; } 
 
