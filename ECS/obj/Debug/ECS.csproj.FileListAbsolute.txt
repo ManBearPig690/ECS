@@ -1,0 +1,5 @@
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\bin\Debug\ECS.dll
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\bin\Debug\ECS.pdb
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\obj\Debug\ECS.csprojResolveAssemblyReference.cache
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\obj\Debug\ECS.dll
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\obj\Debug\ECS.pdb
