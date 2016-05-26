@@ -17,6 +17,13 @@ namespace ECS.Systems
         {
             foreach (var entityId in componentEntityList)
             {
+                if (entities[entityId].GetComponent<MotionComponent>().Gravity != 0)
+                {
+                    entities[entityId].GetComponent<MotionComponent>().VelocityY += dt*
+                                                                                    -entities[entityId]
+                                                                                        .GetComponent<MotionComponent>()
+                                                                                        .Gravity;
+                }
                 entities[entityId].GetComponent<PositionComponent>().PositionX += entities[entityId].GetComponent<MotionComponent>().VelocityX * dt; 
                 entities[entityId].GetComponent<PositionComponent>().PositionY += entities[entityId].GetComponent<MotionComponent>().VelocityY * dt;
             }

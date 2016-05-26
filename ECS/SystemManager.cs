@@ -17,10 +17,19 @@ namespace ECS
         public List<string> PositionComponentEntities;
         public List<string> SpriteComponentEntites;
         public List<string> RenderComponentEntites;
-        public List<string> InputComponentEntities; 
+        public List<string> InputComponentEntities;
+        public MotionSystem MotionSystem;
 
-        public MotionSystem MotionSystem = new MotionSystem();
-
+        public SystemManager()
+        {
+            PlayerComponentEntities = new List<string>();
+            MotionComponentEntities = new List<string>();
+            PositionComponentEntities = new List<string>();
+            SpriteComponentEntites = new List<string>();
+            RenderComponentEntites = new List<string>();
+            InputComponentEntities = new List<string>();
+            MotionSystem = new MotionSystem();
+        }
 
         public void CreateComponentLists(ref Dictionary<string, Entity> entities)
         {

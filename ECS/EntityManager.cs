@@ -33,12 +33,12 @@ namespace ECS
             Entities.Add(worldEntity.EntityId, worldEntity);
         }
 
-        public void CreateBallEntity()
+        public void CreateBallEntity(float pY, float pX, float vX, float vY, float gravity)
         {
             var ballEntity = new Entity();
-            ballEntity.AddComponent(new PositionComponent(0, 0));
+            ballEntity.AddComponent(new PositionComponent(pX, pY));
             ballEntity.AddComponent(new SpriteComponent());
-            ballEntity.AddComponent(new MotionComponent());
+            ballEntity.AddComponent(new MotionComponent(vX, vY, -140));
             ballEntity.AddComponent(new RenderComponent());
 
             Entities.Add(ballEntity.EntityId, ballEntity);
@@ -52,7 +52,7 @@ namespace ECS
             //playerEntity.AddComponent(new CharacterComponent());
             playerEntity.AddComponent(new InputComponent());
             playerEntity.AddComponent(new PositionComponent(0, 0));
-            playerEntity.AddComponent(new MotionComponent());
+            playerEntity.AddComponent(new MotionComponent(0,0,0));
             playerEntity.AddComponent(new SpriteComponent());
             playerEntity.AddComponent(new RenderComponent());
 

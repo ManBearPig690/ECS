@@ -12,5 +12,12 @@ namespace ECS.Component
         public float VelocityY { get; set; }
         public float Rotation { get; set; }
         public float Gravity { get; set; }
+
+        public MotionComponent(float vX, float vY, float gravity)
+        {
+            VelocityX = vX;
+            VelocityY = vY;
+            Gravity = gravity;
+        }
     }
 }

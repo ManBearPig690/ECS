@@ -11,7 +11,7 @@ namespace ECS.Component
         public float PositionX { get; set; }
         public float PositionY { get; set; }
 
-        public PositionComponent(int x, int y)
+        public PositionComponent(float x, float y)
         {
             PositionX = x;
             PositionY = y;

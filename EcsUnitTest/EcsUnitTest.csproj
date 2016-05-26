@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>79fa1df1-8a21-445e-a824-2c37576b10eb</ProjectGuid>
+    <ProjectGuid>{8300425E-0E8E-47C5-9A78-09EC63D93433}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EcsUnitTest</RootNamespace>
@@ -52,6 +52,12 @@
   <ItemGroup>
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ECS\ECS.csproj">
+      <Project>{194a9110-8324-4325-991e-c0f7f33d5a53}</Project>
+      <Name>ECS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

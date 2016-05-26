@@ -18,7 +18,7 @@ namespace ECS
             // all operations for starting up the engine, 
             //enity creation can be called here
             _entityManager.CreateWorld();
-            _entityManager.CreateBallEntity();
+           // _entityManager.CreateBallEntity();
             _entityManager.CreatePlayerEntity();
 
         }
@@ -49,5 +49,7 @@ namespace ECS
             _systemManager.RemoveEntity(ref _entityDestructionList);
             _entityDestructionList.Clear();
         }
+
+        
     }
 }
