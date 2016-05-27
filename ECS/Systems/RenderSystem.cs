@@ -5,14 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using ECS.Entities;
 
+
 namespace ECS.Systems
 {
+    /// <summary>
+    /// draws sprites
+    /// </summary>
     public class RenderSystem : System
     {
-        public new void Update(float dt, ref Dictionary<string, Entity> entities, ref List<string> componentEntityList, ref GameLayer gameLayer)
+        public override void Update(float dt, ref Dictionary<string, Entity> entities, ref List<string> componentEntityList)
         {
-            // get sprites that need rendering
-            // use gameLayer ref to render to teh screen
+            // uses sprite and position component
+            // will update
+            
         }
     }
 }

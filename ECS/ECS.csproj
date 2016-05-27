@@ -34,12 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Component\CollisionComponent.cs" />
     <Compile Include="Component\Component.cs" />
     <Compile Include="Component\InputComponent.cs" />
+    <Compile Include="Component\LabelComponent.cs" />
     <Compile Include="Component\MotionComponent.cs" />
     <Compile Include="Component\PlayerComponent.cs" />
     <Compile Include="Component\PositionComponent.cs" />
-    <Compile Include="Component\RenderComponent.cs" />
     <Compile Include="Component\SpriteComponent.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Entities\Entity.cs" />
@@ -47,6 +48,7 @@
     <Compile Include="GameLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemManager.cs" />
+    <Compile Include="Systems\CollisionSystem.cs" />
     <Compile Include="Systems\MotionSystem.cs" />
     <Compile Include="Systems\RenderSystem.cs" />
     <Compile Include="Systems\System.cs" />

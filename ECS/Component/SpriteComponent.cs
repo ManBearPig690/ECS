@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using CocosSharp;
 namespace ECS.Component
 {
     /// <summary>
@@ -11,5 +11,6 @@ namespace ECS.Component
     /// </summary>
     public class SpriteComponent : Component
     {
+        public CCSprite Sprite { get; set; }
     }
 }

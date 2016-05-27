@@ -28,7 +28,6 @@ namespace ECS
             var worldEntity = new Entity();
             worldEntity.AddComponent(new PositionComponent(0, 0));
             worldEntity.AddComponent(new SpriteComponent());
-            worldEntity.AddComponent(new RenderComponent());
 
             Entities.Add(worldEntity.EntityId, worldEntity);
         }
@@ -39,7 +38,6 @@ namespace ECS
             ballEntity.AddComponent(new PositionComponent(pX, pY));
             ballEntity.AddComponent(new SpriteComponent());
             ballEntity.AddComponent(new MotionComponent(vX, vY, -140));
-            ballEntity.AddComponent(new RenderComponent());
 
             Entities.Add(ballEntity.EntityId, ballEntity);
             BallEntity = ballEntity.EntityId;
@@ -54,9 +52,17 @@ namespace ECS
             playerEntity.AddComponent(new PositionComponent(0, 0));
             playerEntity.AddComponent(new MotionComponent(0,0,0));
             playerEntity.AddComponent(new SpriteComponent());
-            playerEntity.AddComponent(new RenderComponent());
 
             Entities.Add(playerEntity.EntityId, playerEntity);
+        }
+
+        public void CreateScoreEntity()
+        {
+            var scoreEntity = new Entity();
+            scoreEntity.AddComponent(new PositionComponent(0, 0));
+            scoreEntity.AddComponent(new LabelComponent("Score: 0", "Ariel", 20));
+            scoreEntity.EntityId = "Score";
+            Entities.Add(scoreEntity.EntityId, scoreEntity);
         }
 
         public void DestroyEntity(ref List<string> entities)
@@ -68,9 +74,11 @@ namespace ECS
             
         }
 
-        public List<string> EntitesToDestroy()
+        public void EntitesToDestroy(ref List<string> entityDestructionList)
         {
-            return (from entity in Entities.Values where entity.DestroyEntity select entity.EntityId).ToList();
+            entityDestructionList = (from entity in Entities.Values where entity.DestroyEntity select entity.EntityId).ToList();
+            // return list  logic
+            //return (from entity in Entities.Values where entity.DestroyEntity select entity.EntityId).ToList();
         }
     }
 }

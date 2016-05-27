@@ -18,7 +18,11 @@ namespace ECS
         public List<string> SpriteComponentEntites;
         public List<string> RenderComponentEntites;
         public List<string> InputComponentEntities;
+        public List<string> CollisionComponentEntities;
+ 
         public MotionSystem MotionSystem;
+        public CollisionSystem CollisionSystem;
+        public RenderSystem RenderSystem;
 
         public SystemManager()
         {
@@ -28,7 +32,10 @@ namespace ECS
             SpriteComponentEntites = new List<string>();
             RenderComponentEntites = new List<string>();
             InputComponentEntities = new List<string>();
+            CollisionComponentEntities = new List<string>();
             MotionSystem = new MotionSystem();
+            RenderSystem = new RenderSystem();
+            CollisionSystem = new CollisionSystem();
         }
 
         public void CreateComponentLists(ref Dictionary<string, Entity> entities)
@@ -40,8 +47,8 @@ namespace ECS
                 var motionComp = entity.GetComponent<MotionComponent>();
                 var positionComp = entity.GetComponent<PositionComponent>();
                 var spriteComp = entity.GetComponent<SpriteComponent>();
-                var renderComp = entity.GetComponent<RenderComponent>();
                 var inputComp = entity.GetComponent<InputComponent>();
+                var collisionComp = entity.GetComponent<CollisionComponent>();
 
                 if (playerComp != null)
                     PlayerComponentEntities.Add(entity.EntityId);
@@ -51,10 +58,12 @@ namespace ECS
                     PositionComponentEntities.Add(entity.EntityId);
                 if (spriteComp != null)
                     SpriteComponentEntites.Add(entity.EntityId);
-                if (renderComp != null)
+                if (spriteComp != null && positionComp != null) // adds all entities that have sprite and position so they can be drawn
                     RenderComponentEntites.Add(entity.EntityId);
                 if (inputComp != null)
                     InputComponentEntities.Add(entity.EntityId);
+                if (collisionComp != null)
+                    CollisionComponentEntities.Add(entity.EntityId);
 
             }
         }
