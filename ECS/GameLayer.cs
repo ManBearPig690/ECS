@@ -14,6 +14,7 @@ namespace ECS
         private static SystemManager _systemManager;
         private static List<string> _entityDestructionList;
         private static int _score;
+
         public GameLayer(): base(CCColor4B.Black)
         {
             _score = 0;
@@ -34,7 +35,7 @@ namespace ECS
         }
 
 
-        private void Run(float framTimeInSeconds)
+        private static void Run(float framTimeInSeconds)
         {
             _systemManager.MotionSystem.Update(framTimeInSeconds, ref _entityManager.Entities, ref _systemManager.MotionComponentEntities);
             // run all the rest
@@ -42,6 +43,8 @@ namespace ECS
 
             _score += _systemManager.CollisionSystem.Update(framTimeInSeconds, ref _entityManager.Entities, ref _systemManager.CollisionComponentEntities);
 
+            // add input system as touch even handler so it gets called on touch even
+            // ??? inputsystem will look for InputComponent and perform action ???
 
             // Applies the updated positions to sprites
             _systemManager.RenderSystem.Update(framTimeInSeconds, ref _entityManager.Entities,
