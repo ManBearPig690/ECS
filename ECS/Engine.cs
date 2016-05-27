@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
-using Android.OS;
 using CocosSharp;
 
 
@@ -12,52 +11,39 @@ namespace ECS
 {
     public class Engine
     {
-        // move managers and systems calls into game layer
-        private static EntityManager _entityManager = new EntityManager();
-        private static SystemManager _systemManager = new SystemManager();
-        private static List<string> _entityDestructionList = new List<string>();
 
-        public Engine()
-        {
-            
-        }
+        private static readonly GameLayer GameLayer = new GameLayer();
 
-        public void Init()
+        public void LoadGame(object sender, EventArgs e)
         {
-            // all operations for starting up the engine, 
-            //enity creation can be called here
-            _entityManager.CreateWorld();
-           // _entityManager.CreateBallEntity();
-            _entityManager.CreatePlayerEntity();
-        }
+            var gameView = sender as CCGameView;
 
-        public void Run()
-        {
-            // contains the looping update of all the systems
-           
-            while (true)
+            if (gameView != null)
             {
-                ExecuteSystems();
-                break;
+                var contentSearchPaths = new List<string>(){"Fonts", "Sounds"};
+                var viewSize = gameView.ViewSize;
+
+                int width = 768;
+                int height = 1027;
+
+                gameView.DesignResolution = new CCSizeI(width, height);
+
+                if (width < viewSize.Width)
+                {
+                    contentSearchPaths.Add("Images/Hd");
+                    CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
+                }
+                else
+                {
+                    contentSearchPaths.Add("Images/Ld");
+                    CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
+                }
+
+                gameView.ContentManager.SearchPaths = contentSearchPaths;
+                var gameScene = new CCScene(gameView);
+                gameScene.AddLayer(GameLayer);
+                gameView.RunWithScene(gameScene);
             }
-            
         }
-
-        public void ExecuteSystems()
-        {
-            _systemManager.MotionSystem.Update(.1f, ref _entityManager.Entities, ref _systemManager.MotionComponentEntities);
-            // run all the rest
-
-
-            // if entity should be removed
-            // remove from entiy list
-            // remove from component list used by systems.
-            _entityDestructionList = _entityManager.EntitesToDestroy();
-            _entityManager.DestroyEntity(ref _entityDestructionList);
-            _systemManager.RemoveEntity(ref _entityDestructionList);
-            _entityDestructionList.Clear();
-        }
-
-        
     }
 }

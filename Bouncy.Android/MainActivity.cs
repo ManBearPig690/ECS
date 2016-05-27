@@ -35,8 +35,9 @@ namespace Bouncy.Android
             // Get our game view from the layout resource,
             // and attach the view created event to it
 
+            engine = new Engine();
             CCGameView gameView = (CCGameView)FindViewById(Resource.Id.GameView);
-            gameView.ViewCreated += LoadGame;
+            gameView.ViewCreated += engine.LoadGame;
         }
 
 

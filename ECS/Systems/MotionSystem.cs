@@ -17,7 +17,7 @@ namespace ECS.Systems
         {
             foreach (var entityId in componentEntityList)
             {
-                if (entities[entityId].GetComponent<MotionComponent>().Gravity != 0)
+                if (entities[entityId].GetComponent<MotionComponent>().Gravity != 0f)
                 {
                     entities[entityId].GetComponent<MotionComponent>().VelocityY += dt*
                                                                                     -entities[entityId]
