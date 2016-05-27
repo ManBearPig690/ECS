@@ -47,9 +47,9 @@ namespace Bouncy.Android
             CCRect bounds = VisibleBoundsWorldspace;
             // Register for touch events
             var touchListener = new CCEventListenerTouchAllAtOnce();
-            touchListener.OnTouchesEnded = OnTouchesEnded;
+            touchListener.OnTouchesEnded = OnTouchesEnded; // system manager -> InputSystem.Update() -> will handle object(s) with InputComponent
             touchListener.OnTouchesMoved = HandleTouchesMoved;
-            AddEventListener(touchListener, this);
+            AddEventListener(touchListener, this); // fine
         }
         void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {

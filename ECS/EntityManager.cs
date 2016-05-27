@@ -23,7 +23,7 @@ namespace ECS
             Entities = new Dictionary<string, Entity>();
         }
 
-        public void CreateWorld()
+        public void CreateWorld(int width, int height)
         {
             var worldEntity = new Entity();
             worldEntity.AddComponent(new PositionComponent(0, 0));

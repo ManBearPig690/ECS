@@ -15,14 +15,14 @@ namespace ECS
         private static List<string> _entityDestructionList;
         private static int _score;
 
-        public GameLayer(): base(CCColor4B.Black)
+        public GameLayer(int width, int height): base(CCColor4B.Black)
         {
             _score = 0;
             _entityManager = new EntityManager();
             _systemManager = new SystemManager();
             _entityDestructionList = new List<string>();
 
-            _entityManager.CreateWorld();
+            _entityManager.CreateWorld(width, height);
 
             _entityManager.CreateBallEntity(0, 0, 0, 0, 140);
             _entityManager.CreatePlayerEntity();
