@@ -11,7 +11,9 @@ namespace ECS
 {
     public class Engine
     {
-
+        // this can alos hold some global data for transitioning between layers
+        //...like player data so it is not lost if all entities are cleared from the game layer
+        // when loading a new level
         private static readonly GameLayer GameLayer = new GameLayer();
 
         public void LoadGame(object sender, EventArgs e)
