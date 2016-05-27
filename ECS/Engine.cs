@@ -4,18 +4,20 @@ using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using Android.OS;
 using CocosSharp;
 
 
 namespace ECS
 {
-    public class Engine : CCLayerColor
+    public class Engine
     {
+        // move managers and systems calls into game layer
         private static EntityManager _entityManager = new EntityManager();
         private static SystemManager _systemManager = new SystemManager();
         private static List<string> _entityDestructionList = new List<string>();
 
-        public Engine() : base(CCColor4B.Blue)
+        public Engine()
         {
             
         }

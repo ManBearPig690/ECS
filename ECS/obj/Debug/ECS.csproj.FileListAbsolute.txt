@@ -10,3 +10,10 @@ C:\Users\James Fleuret\Documents\James\dev\ECS\ECS\obj\Debug\ECS.pdb
 C:\Users\James Fleuret\Documents\James\dev\ECS\ECS\bin\Debug\box2d.dll
 C:\Users\James Fleuret\Documents\James\dev\ECS\ECS\bin\Debug\CocosSharp.dll
 C:\Users\James Fleuret\Documents\James\dev\ECS\ECS\bin\Debug\MonoGame.Framework.dll
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\bin\Debug\box2d.dll
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\bin\Debug\CocosSharp.dll
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\bin\Debug\MonoGame.Framework.dll
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\bin\Debug\Mono.Android.dll
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\bin\Debug\Mono.Android.xml
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\obj\Debug\ECS.dll.mdb
+C:\Users\james\Documents\DEV\GameDev\ECS\ECS\bin\Debug\ECS.dll.mdb
