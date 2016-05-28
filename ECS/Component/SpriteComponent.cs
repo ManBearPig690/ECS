@@ -12,5 +12,10 @@ namespace ECS.Component
     public class SpriteComponent : Component
     {
         public CCSprite Sprite { get; set; }
+
+        public SpriteComponent(string fileName)
+        {
+            Sprite = new CCSprite(fileName);
+        }
     }
 }

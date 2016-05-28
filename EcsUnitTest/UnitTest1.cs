@@ -13,7 +13,7 @@ namespace EcsUnitTest
         {
             var eManager = new EntityManager();
             var sManager = new SystemManager();
-            eManager.CreateBallEntity(0, 0, 0, 0, 140);
+            eManager.CreateBallEntity(0, 0, 0, 0, 140, "ball");
             sManager.CreateComponentLists(ref eManager.Entities);
 
             bool falling = true;

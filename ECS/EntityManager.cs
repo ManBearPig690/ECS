@@ -23,35 +23,33 @@ namespace ECS
             Entities = new Dictionary<string, Entity>();
         }
 
-        public void CreateWorld(int width, int height)
+        public void CreateWorld(int width, int height, string fileName)
         {
             var worldEntity = new Entity();
             worldEntity.AddComponent(new PositionComponent(0, 0));
-            worldEntity.AddComponent(new SpriteComponent());
+            worldEntity.AddComponent(new SpriteComponent(fileName));
 
             Entities.Add(worldEntity.EntityId, worldEntity);
         }
 
-        public void CreateBallEntity(float pY, float pX, float vX, float vY, float gravity)
+        public void CreateBallEntity(float pX, float pY, float vX, float vY, float gravity, string fileName)
         {
             var ballEntity = new Entity();
             ballEntity.AddComponent(new PositionComponent(pX, pY));
-            ballEntity.AddComponent(new SpriteComponent());
+            ballEntity.AddComponent(new SpriteComponent(fileName));
             ballEntity.AddComponent(new MotionComponent(vX, vY, -140));
 
             Entities.Add(ballEntity.EntityId, ballEntity);
             BallEntity = ballEntity.EntityId;
         }
 
-        public void CreatePlayerEntity()
+        public void CreatePlayerEntity(float pX, float pY, float vX, float vY, string fileName)
         {
             var playerEntity = new Entities.Entity();
-            //playerEntity.AddComponent(new PlayerComponent());
-            //playerEntity.AddComponent(new CharacterComponent());
             playerEntity.AddComponent(new InputComponent());
-            playerEntity.AddComponent(new PositionComponent(0, 0));
-            playerEntity.AddComponent(new MotionComponent(0,0,0));
-            playerEntity.AddComponent(new SpriteComponent());
+            playerEntity.AddComponent(new PositionComponent(pX, pY));
+            playerEntity.AddComponent(new MotionComponent(vX, vY, 0));
+            playerEntity.AddComponent(new SpriteComponent(fileName));
 
             Entities.Add(playerEntity.EntityId, playerEntity);
         }

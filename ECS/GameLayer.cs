@@ -22,10 +22,10 @@ namespace ECS
             _systemManager = new SystemManager();
             _entityDestructionList = new List<string>();
 
-            _entityManager.CreateWorld(width, height);
+            _entityManager.CreateWorld(width, height, "map");
 
-            _entityManager.CreateBallEntity(0, 0, 0, 0, 140);
-            _entityManager.CreatePlayerEntity();
+            _entityManager.CreateBallEntity(320, 600, 0, 0, 140, "ball");
+            _entityManager.CreatePlayerEntity(100, 100, 0, 0, "paddle");
             _entityManager.CreateScoreEntity();
             _systemManager.CreateComponentLists(ref _entityManager.Entities);
 
