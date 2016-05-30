@@ -30,6 +30,8 @@ namespace ECS
             _systemManager.CreateComponentLists(ref _entityManager.Entities);
 
             AddChild(_entityManager.Entities["Score"].GetComponent<LabelComponent>().Label);
+            _entityManager.Entities["Score"].GetComponent<LabelComponent>().Label.AnchorPoint = CCPoint.AnchorUpperLeft;
+
             AddSprite();
             Schedule(Run);
         }
