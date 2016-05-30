@@ -49,8 +49,9 @@ namespace ECS
             // ??? inputsystem will look for InputComponent and perform action ???
 
             // Applies the updated positions to sprites
-            _systemManager.RenderSystem.Update(framTimeInSeconds, ref _entityManager.Entities,
-                ref _systemManager.RenderComponentEntites);
+            // not sure if needed
+            //_systemManager.RenderSystem.Update(framTimeInSeconds, ref _entityManager.Entities,
+            //    ref _systemManager.RenderComponentEntites);
 
             _entityManager.Entities["Score"].GetComponent<LabelComponent>().Label.Text = "Score: " + _score;
         

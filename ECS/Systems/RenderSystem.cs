@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECS.Entities;
-
+using CocosSharp;
 
 namespace ECS.Systems
 {
@@ -15,9 +15,12 @@ namespace ECS.Systems
     {
         public override void Update(float dt, ref Dictionary<string, Entity> entities, ref List<string> componentEntityList)
         {
-            // uses sprite and position component
-            // will update
-            
+            //// uses sprite and position component
+            //// will update
+            //foreach (var entityId in componentEntityList)
+            //{
+                
+            //}
         }
     }
 }

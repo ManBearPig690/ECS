@@ -38,6 +38,7 @@ namespace ECS
             ballEntity.AddComponent(new PositionComponent(pX, pY));
             ballEntity.AddComponent(new SpriteComponent(fileName));
             ballEntity.AddComponent(new MotionComponent(vX, vY, -140));
+            ballEntity.EntityId = "Ball";
 
             Entities.Add(ballEntity.EntityId, ballEntity);
             BallEntity = ballEntity.EntityId;
@@ -50,7 +51,7 @@ namespace ECS
             playerEntity.AddComponent(new PositionComponent(pX, pY));
             playerEntity.AddComponent(new MotionComponent(vX, vY, 0));
             playerEntity.AddComponent(new SpriteComponent(fileName));
-
+            playerEntity.EntityId = "Paddle";
             Entities.Add(playerEntity.EntityId, playerEntity);
         }
 
