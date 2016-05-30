@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECS.Entities;
+using CocosSharp;
 
 namespace ECS.Systems
 {
@@ -20,6 +21,13 @@ namespace ECS.Systems
             // do collision logic
             // if ball and paddle colide reutrn 1
             // else 
+            var ballSprite = entities["Ball"].GetComponent<Component.SpriteComponent>().Sprite;
+            var paddleSprite = entities["Paddle"].GetComponent<Component.SpriteComponent>().Sprite;
+            bool doesBallOverlapPaddle = ballSprite.BoundingBoxTransformedToParent.IntersectsRect(
+                paddleSprite.BoundingBoxTransformedToParent);
+
+
+
             return 0;
         }
     }
