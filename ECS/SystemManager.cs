@@ -22,6 +22,7 @@ namespace ECS
         public InputSystem InputSystem;
         public MotionSystem MotionSystem;
         public CollisionSystem CollisionSystem;
+        public RenderSystem RenderSystem;
         
 
         public SystemManager()
@@ -36,6 +37,7 @@ namespace ECS
             MotionSystem = new MotionSystem();
             CollisionSystem = new CollisionSystem();
             InputSystem = new InputSystem();
+            RenderSystem = new RenderSystem();
         }
 
         public void CreateComponentLists(ref Dictionary<string, Entity> entities)

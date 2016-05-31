@@ -11,7 +11,7 @@ namespace ECS.Systems
 {
     public class InputSystem : System
     {
-        public void Update(float dt, ref Dictionary<string, Entity> entities, ref List<string> componentEntityList)
+        public override void Update(float dt, ref List<string> componentEntityList)
         {
             foreach(var entityId in componentEntityList)
             {

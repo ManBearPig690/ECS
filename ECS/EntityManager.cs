@@ -28,7 +28,7 @@ namespace ECS
             var worldEntity = new Entity();
             worldEntity.AddComponent(new PositionComponent(0, 0));
             worldEntity.AddComponent(new SpriteComponent(fileName));
-
+            worldEntity.EntityId = "Map";
             Entities.Add(worldEntity.EntityId, worldEntity);
         }
 

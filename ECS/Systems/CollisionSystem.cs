@@ -21,21 +21,21 @@ namespace ECS.Systems
         private const float MinXVelocity = -300;
         private const float MaxXVelocity = 300;
 
-        public int Update(float dt, ref Dictionary<string, Entity> entities, ref List<string> componentEntityList, float screenLeft, float screenRight, float minY)
+        public int Update(float dt, ref List<string> componentEntityList, float screenLeft, float screenRight, float minY)
         {
             // do collision logic
             // if ball and paddle colide reutrn 1
             // else 
-            var ballSprite = entities["Ball"].GetComponent<Component.SpriteComponent>().Sprite;
-            var paddleSprite = entities["Paddle"].GetComponent<Component.SpriteComponent>().Sprite;
+            var ballSprite = EntityManager.Entities["Ball"].GetComponent<Component.SpriteComponent>().Sprite;
+            var paddleSprite = EntityManager.Entities["Paddle"].GetComponent<Component.SpriteComponent>().Sprite;
             bool doesBallOverlapPaddle = ballSprite.BoundingBoxTransformedToParent.IntersectsRect(
                 paddleSprite.BoundingBoxTransformedToParent);
-            bool isFalling = entities["Ball"].GetComponent<MotionComponent>().VelocityY < 0;
+            bool isFalling = EntityManager.Entities["Ball"].GetComponent<MotionComponent>().VelocityY < 0;
 
             if (doesBallOverlapPaddle && isFalling)
             {
-                entities["Ball"].GetComponent<MotionComponent>().VelocityY *= -1;
-                entities["Ball"].GetComponent<MotionComponent>().VelocityX = CCRandom.GetRandomFloat(MinXVelocity,
+                EntityManager.Entities["Ball"].GetComponent<MotionComponent>().VelocityY *= -1;
+                EntityManager.Entities["Ball"].GetComponent<MotionComponent>().VelocityX = CCRandom.GetRandomFloat(MinXVelocity,
                     MaxXVelocity);
                 return 1;
             }
@@ -45,11 +45,11 @@ namespace ECS.Systems
             
             // Check if the ball is either too far to the right or left:    
             bool shouldReflectXVelocity =
-                (ballRight > screenRight && entities["Ball"].GetComponent<MotionComponent>().VelocityX > 0) ||
-                (ballLeft < screenLeft && entities["Ball"].GetComponent<MotionComponent>().VelocityX < 0);
+                (ballRight > screenRight && EntityManager.Entities["Ball"].GetComponent<MotionComponent>().VelocityX > 0) ||
+                (ballLeft < screenLeft && EntityManager.Entities["Ball"].GetComponent<MotionComponent>().VelocityX < 0);
             if (shouldReflectXVelocity)
             {
-                entities["Ball"].GetComponent<MotionComponent>().VelocityX *= -1;
+                EntityManager.Entities["Ball"].GetComponent<MotionComponent>().VelocityX *= -1;
             }
 
             if (ballSprite.PositionY < minY)

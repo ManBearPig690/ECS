@@ -13,19 +13,19 @@ namespace ECS.Systems
 
 
         // might need to set frame rate/ update in secons some where get how many animation frames
-        public override void Update(float dt, ref Dictionary<string, Entity> entities, ref List<string> componentEntityList)
+        public override void Update(float dt, ref List<string> componentEntityList)
         {
             foreach (var entityId in componentEntityList)
             {
-                if (entities[entityId].GetComponent<MotionComponent>().Gravity != 0f)
+                if (EntityManager.Entities[entityId].GetComponent<MotionComponent>().Gravity != 0f)
                 {
-                    entities[entityId].GetComponent<MotionComponent>().VelocityY += dt*
-                                                                                    -entities[entityId]
+                    EntityManager.Entities[entityId].GetComponent<MotionComponent>().VelocityY += dt*
+                                                                                    -EntityManager.Entities[entityId]
                                                                                         .GetComponent<MotionComponent>()
                                                                                         .Gravity;
                 }
-                entities[entityId].GetComponent<PositionComponent>().PositionX += entities[entityId].GetComponent<MotionComponent>().VelocityX * dt; 
-                entities[entityId].GetComponent<PositionComponent>().PositionY += entities[entityId].GetComponent<MotionComponent>().VelocityY * dt;
+                EntityManager.Entities[entityId].GetComponent<PositionComponent>().PositionX += EntityManager.Entities[entityId].GetComponent<MotionComponent>().VelocityX * dt; 
+                EntityManager.Entities[entityId].GetComponent<PositionComponent>().PositionY += EntityManager.Entities[entityId].GetComponent<MotionComponent>().VelocityY * dt;
             }
         }
 

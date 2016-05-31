@@ -40,7 +40,7 @@ namespace ECS
         {
             base.AddedToScene();
             // Use the bounds to layout the positioning of our drawable assets
-            CCRect bounds = VisibleBoundsWorldspace;
+            CCRect bounds = VisibleBoundsWorldspace; // is this used?
             // Register for touch events
             var touchListener = new CCEventListenerTouchAllAtOnce();
             //touchListener.OnTouchesEnded = OnTouchesEnded; // system manager -> InputSystem.Update() -> will handle object(s) with InputComponent
@@ -50,20 +50,12 @@ namespace ECS
 
         private void Run(float framTimeInSeconds)
         {
-            _systemManager.MotionSystem.Update(framTimeInSeconds, ref EntityManager.Entities, ref _systemManager.MotionComponentEntities);
+            _systemManager.MotionSystem.Update(framTimeInSeconds, ref _systemManager.MotionComponentEntities);
             // run all the rest
 
-
-            var scoring = _systemManager.CollisionSystem.Update(framTimeInSeconds, ref EntityManager.Entities, ref _systemManager.CollisionComponentEntities, VisibleBoundsWorldspace.MinX, VisibleBoundsWorldspace.MaxX, VisibleBoundsWorldspace.MinY);
-
-            // add input system as touch even handler so it gets called on touch even
-            // ??? inputsystem will look for InputComponent and perform action ???
-
-            // Applies the updated positions to sprites
-            // not sure if needed
-            //_systemManager.RenderSystem.Update(framTimeInSeconds, ref _entityManager.Entities,
-            //    ref _systemManager.RenderComponentEntites);
-
+            _systemManager.RenderSystem.Update(framTimeInSeconds, ref _systemManager.RenderComponentEntites);
+            var scoring = _systemManager.CollisionSystem.Update(framTimeInSeconds, ref _systemManager.CollisionComponentEntities, VisibleBoundsWorldspace.MinX, VisibleBoundsWorldspace.MaxX, VisibleBoundsWorldspace.MinY);
+            
             if (scoring == -1)
                 _score = 0;
 
