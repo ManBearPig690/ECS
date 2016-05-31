@@ -10,7 +10,7 @@ namespace ECS
 {
     public class GameLayer : CCLayerColor
     {
-        private static EntityManager _entityManager;
+        //private static EntityManager _entityManager;
         private static SystemManager _systemManager;
         private static List<string> _entityDestructionList;
         private static int _score;
@@ -18,19 +18,19 @@ namespace ECS
         public GameLayer(int width, int height): base(CCColor4B.Black)
         {
             _score = 0;
-            _entityManager = new EntityManager();
+            //_entityManager = new EntityManager();
             _systemManager = new SystemManager();
             _entityDestructionList = new List<string>();
 
-            _entityManager.CreateWorld(width, height, "map");
+            EntityManager.CreateWorld(width, height, "map");
 
-            _entityManager.CreateBallEntity(320, 600, 0, 0, 140, "ball");
-            _entityManager.CreatePlayerEntity(100, 100, 0, 0, "paddle");
-            _entityManager.CreateScoreEntity();
-            _systemManager.CreateComponentLists(ref _entityManager.Entities);
+            EntityManager.CreateBallEntity(320, 600, 0, 0, 140, "ball");
+            EntityManager.CreatePlayerEntity(100, 100, 0, 0, "paddle");
+            EntityManager.CreateScoreEntity();
+            _systemManager.CreateComponentLists(ref EntityManager.Entities);
 
-            AddChild(_entityManager.Entities["Score"].GetComponent<LabelComponent>().Label);
-            _entityManager.Entities["Score"].GetComponent<LabelComponent>().Label.AnchorPoint = CCPoint.AnchorUpperLeft;
+            AddChild(EntityManager.Entities["Score"].GetComponent<LabelComponent>().Label);
+            EntityManager.Entities["Score"].GetComponent<LabelComponent>().Label.AnchorPoint = CCPoint.AnchorUpperLeft;
 
             AddSprite();
             Schedule(Run);
@@ -44,17 +44,17 @@ namespace ECS
             // Register for touch events
             var touchListener = new CCEventListenerTouchAllAtOnce();
             //touchListener.OnTouchesEnded = OnTouchesEnded; // system manager -> InputSystem.Update() -> will handle object(s) with InputComponent
-            touchListener.OnTouchesMoved = HandleTouchesMoved;
+            touchListener.OnTouchesMoved = _systemManager.InputSystem.HandleTouchesMoved;
             AddEventListener(touchListener, this); // fine
         }
 
-        private static void Run(float framTimeInSeconds)
+        private void Run(float framTimeInSeconds)
         {
-            _systemManager.MotionSystem.Update(framTimeInSeconds, ref _entityManager.Entities, ref _systemManager.MotionComponentEntities);
+            _systemManager.MotionSystem.Update(framTimeInSeconds, ref EntityManager.Entities, ref _systemManager.MotionComponentEntities);
             // run all the rest
 
 
-            _score += _systemManager.CollisionSystem.Update(framTimeInSeconds, ref _entityManager.Entities, ref _systemManager.CollisionComponentEntities);
+            var scoring = _systemManager.CollisionSystem.Update(framTimeInSeconds, ref EntityManager.Entities, ref _systemManager.CollisionComponentEntities, VisibleBoundsWorldspace.MinX, VisibleBoundsWorldspace.MaxX, VisibleBoundsWorldspace.MinY);
 
             // add input system as touch even handler so it gets called on touch even
             // ??? inputsystem will look for InputComponent and perform action ???
@@ -64,17 +64,21 @@ namespace ECS
             //_systemManager.RenderSystem.Update(framTimeInSeconds, ref _entityManager.Entities,
             //    ref _systemManager.RenderComponentEntites);
 
-            _entityManager.Entities["Score"].GetComponent<LabelComponent>().Label.Text = "Score: " + _score;
+            if (scoring == -1)
+                _score = 0;
+
+            EntityManager.Entities["Score"].GetComponent<LabelComponent>().Label.Text = "Score: " + _score;
+            
         
 
             // if entity should be removed
             // remove from entiy list
             // remove from component list used by systems.
             //_entityDestructionList = _entityManager.EntitesToDestroy(); // returns a list
-            _entityManager.EntitesToDestroy(ref _entityDestructionList);
+            EntityManager.EntitesToDestroy(ref _entityDestructionList);
             if(_entityDestructionList.Count > 0)
-            { 
-                _entityManager.DestroyEntity(ref _entityDestructionList);
+            {
+                EntityManager.DestroyEntity(ref _entityDestructionList);
                 _systemManager.RemoveEntity(ref _entityDestructionList);
                 _entityDestructionList.Clear();
             }
@@ -85,7 +89,7 @@ namespace ECS
         {
             foreach (var entityId in _systemManager.RenderComponentEntites)
             {
-                AddChild(_entityManager.Entities[entityId].GetComponent<SpriteComponent>().Sprite);
+                AddChild(EntityManager.Entities[entityId].GetComponent<SpriteComponent>().Sprite);
             }
         }
         

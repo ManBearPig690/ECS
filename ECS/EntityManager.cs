@@ -12,18 +12,18 @@ namespace ECS
     /// creates and manages entities, could pass params so that they could in turn
     /// be passed to the corrisponding components depending on the entity
     /// </summary>
-    public class EntityManager
+    public static class EntityManager
     {
 
-        public Dictionary<string, Entity> Entities;
-        public string BallEntity;
+        public static Dictionary<string, Entity> Entities;
+        public static string BallEntity;
 
-        public EntityManager()
+        static EntityManager()
         {
             Entities = new Dictionary<string, Entity>();
         }
 
-        public void CreateWorld(int width, int height, string fileName)
+        public static void CreateWorld(int width, int height, string fileName)
         {
             var worldEntity = new Entity();
             worldEntity.AddComponent(new PositionComponent(0, 0));
@@ -32,7 +32,7 @@ namespace ECS
             Entities.Add(worldEntity.EntityId, worldEntity);
         }
 
-        public void CreateBallEntity(float pX, float pY, float vX, float vY, float gravity, string fileName)
+        public static void CreateBallEntity(float pX, float pY, float vX, float vY, float gravity, string fileName)
         {
             var ballEntity = new Entity();
             ballEntity.AddComponent(new PositionComponent(pX, pY));
@@ -44,7 +44,7 @@ namespace ECS
             BallEntity = ballEntity.EntityId;
         }
 
-        public void CreatePlayerEntity(float pX, float pY, float vX, float vY, string fileName)
+        public static void CreatePlayerEntity(float pX, float pY, float vX, float vY, string fileName)
         {
             var playerEntity = new Entities.Entity();
             playerEntity.AddComponent(new InputComponent());
@@ -55,7 +55,7 @@ namespace ECS
             Entities.Add(playerEntity.EntityId, playerEntity);
         }
 
-        public void CreateScoreEntity()
+        public static void CreateScoreEntity()
         {
             var scoreEntity = new Entity();
             scoreEntity.AddComponent(new PositionComponent(0, 0));
@@ -64,7 +64,7 @@ namespace ECS
             Entities.Add(scoreEntity.EntityId, scoreEntity);
         }
 
-        public void DestroyEntity(ref List<string> entities)
+        public static void DestroyEntity(ref List<string> entities)
         {
             foreach (var entityId in entities)
             {
@@ -73,7 +73,7 @@ namespace ECS
             
         }
 
-        public void EntitesToDestroy(ref List<string> entityDestructionList)
+        public static void EntitesToDestroy(ref List<string> entityDestructionList)
         {
             entityDestructionList = (from entity in Entities.Values where entity.DestroyEntity select entity.EntityId).ToList();
             // return list  logic

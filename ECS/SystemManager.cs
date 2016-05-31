@@ -19,10 +19,10 @@ namespace ECS
         public List<string> RenderComponentEntites;
         public List<string> InputComponentEntities;
         public List<string> CollisionComponentEntities;
- 
+        public InputSystem InputSystem;
         public MotionSystem MotionSystem;
         public CollisionSystem CollisionSystem;
-        public RenderSystem RenderSystem;
+        
 
         public SystemManager()
         {
@@ -34,8 +34,8 @@ namespace ECS
             InputComponentEntities = new List<string>();
             CollisionComponentEntities = new List<string>();
             MotionSystem = new MotionSystem();
-            RenderSystem = new RenderSystem();
             CollisionSystem = new CollisionSystem();
+            InputSystem = new InputSystem();
         }
 
         public void CreateComponentLists(ref Dictionary<string, Entity> entities)

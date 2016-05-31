@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CocosSharp;
+using ECS.Component;
 using ECS.Entities;
 
 namespace ECS.Systems
@@ -18,10 +19,10 @@ namespace ECS.Systems
             }
         }
 
-        void HandleTouchesMoved(List<CCTouch> touches, CCEvent touchevent)
+        public void HandleTouchesMoved(List<CCTouch> touches, CCEvent touchevent)
         {
             var locationOnScreen = touches[0].Location;
-            //paddleSprite.PositionX = locationOnScreen.X;
+            EntityManager.Entities["Paddle"].GetComponent<SpriteComponent>().Sprite.PositionX = locationOnScreen.X;
         }
 
     }
